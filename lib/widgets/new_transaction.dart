@@ -53,60 +53,67 @@ class _NewTransactionState extends State<NewTransaction> {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 5,
-      child: Container(
-        padding: const EdgeInsets.all(10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: <Widget>[
-            TextField(
-              decoration: InputDecoration(labelText: 'Title'),
-              // onChanged: (value) {
-              //   titleInput = value;
-              // },
-              controller: _titleController,
-              onSubmitted: (_) => _submitData(),
-            ),
-            TextField(
-              decoration: InputDecoration(labelText: 'Amount'),
-              // onChanged: (value) {
-              //   amountInput = value;
-              // },
-              controller: _amountController,
-              keyboardType: TextInputType.number,
-              onSubmitted: (_) => _submitData(),
-            ),
-            Container(
-              height: 80,
-              child: Row(
-                children: <Widget>[
-                  Expanded(
-                    child: Text(
-                      _selectedDate == null
-                          ? 'No date Chosen!'
-                          : 'Picked Date: ${DateFormat.yMd().format(_selectedDate)}',
-                    ),
-                  ),
-                  TextButton(
-                    onPressed: _presentDatePicker,
-                    child: Text(
-                      'Choose Date',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                  )
-                ],
+    return SingleChildScrollView(
+      child: Card(
+        elevation: 5,
+        child: Container(
+          padding: EdgeInsets.only(
+            top: 10,
+            left: 10,
+            right: 10,
+            bottom: MediaQuery.of(context).viewInsets.bottom + 10,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: <Widget>[
+              TextField(
+                decoration: InputDecoration(labelText: 'Title'),
+                // onChanged: (value) {
+                //   titleInput = value;
+                // },
+                controller: _titleController,
+                onSubmitted: (_) => _submitData(),
               ),
-            ),
-            ElevatedButton(
-              onPressed: _submitData,
-              child: Text('Add Transaction'),
-              style: ButtonStyle(
-                foregroundColor: MaterialStateProperty.all<Color>(
-                    const Color.fromARGB(255, 249, 249, 249)),
+              TextField(
+                decoration: InputDecoration(labelText: 'Amount'),
+                // onChanged: (value) {
+                //   amountInput = value;
+                // },
+                controller: _amountController,
+                keyboardType: TextInputType.number,
+                onSubmitted: (_) => _submitData(),
               ),
-            )
-          ],
+              Container(
+                height: 80,
+                child: Row(
+                  children: <Widget>[
+                    Expanded(
+                      child: Text(
+                        _selectedDate == null
+                            ? 'No date Chosen!'
+                            : 'Picked Date: ${DateFormat.yMd().format(_selectedDate)}',
+                      ),
+                    ),
+                    TextButton(
+                      onPressed: _presentDatePicker,
+                      child: Text(
+                        'Choose Date',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              ElevatedButton(
+                onPressed: _submitData,
+                child: Text('Add Transaction'),
+                style: ButtonStyle(
+                  foregroundColor: MaterialStateProperty.all<Color>(
+                      const Color.fromARGB(255, 249, 249, 249)),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
