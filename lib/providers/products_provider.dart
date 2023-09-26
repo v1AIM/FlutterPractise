@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../models/product.dart';
+import './product.dart';
 import 'package:flutter/foundation.dart';
 
 class Products with ChangeNotifier {
@@ -47,7 +47,7 @@ class Products with ChangeNotifier {
   }
 
   void addProduct(Product product) {
-    _items.add(product);
+    //_items.add(product);
     notifyListeners();
   }
 }
