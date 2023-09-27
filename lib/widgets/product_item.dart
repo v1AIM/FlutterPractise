@@ -39,7 +39,7 @@ class ProductItem extends StatelessWidget {
           trailing: IconButton(
             onPressed: () {},
             icon: const Icon(Icons.shopping_cart),
-            color: Colors.yellowAccent,
+            color: Theme.of(context).secondaryHeaderColor,
           ),
         ),
         child: GestureDetector(
