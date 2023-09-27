@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../providers/cart.dart';
 import '../screens/product_details.dart';
 import '../providers/product.dart';
 
@@ -19,6 +20,7 @@ class ProductItem extends StatelessWidget {
     //like a ListTile
     final product = Provider.of<Product>(context);
     //The ClipRRect widget is a widget that clips its child using a rectangle. (Forces the Child widget to wraps into a certain shape )
+    final cart = Provider.of<Cart>(context, listen: false);
     return ClipRRect(
       borderRadius: BorderRadius.circular(10),
       child: GridTile(
@@ -37,7 +39,13 @@ class ProductItem extends StatelessWidget {
             color: Theme.of(context).secondaryHeaderColor,
           ),
           trailing: IconButton(
-            onPressed: () {},
+            onPressed: () {
+              cart.addItem(
+                product.id,
+                product.price,
+                product.title,
+              );
+            },
             icon: const Icon(Icons.shopping_cart),
             color: Theme.of(context).secondaryHeaderColor,
           ),
