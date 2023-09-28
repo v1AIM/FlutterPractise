@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../providers/cart.dart';
+
+import '../widgets/cart_item.dart' as ci;
 
 class CartOverview extends StatelessWidget {
   static const routeName = '/cart-overview';
@@ -14,6 +15,7 @@ class CartOverview extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Your Cart'),
+        backgroundColor: Theme.of(context).primaryColor,
       ),
       body: Column(
         children: <Widget>[
@@ -43,6 +45,16 @@ class CartOverview extends StatelessWidget {
                 ],
               ),
             ),
+          ),
+          SizedBox(height: 10),
+          Expanded(
+            child: ListView.builder(
+                itemBuilder: (context, i) => ci.CartItem(
+                    id: cart.items!.values.toList()[i].id,
+                    title: cart.items!.values.toList()[i].title,
+                    quantity: cart.items!.values.toList()[i].quantity,
+                    price: cart.items!.values.toList()[i].price),
+                itemCount: cart.items!.length),
           )
         ],
       ),
