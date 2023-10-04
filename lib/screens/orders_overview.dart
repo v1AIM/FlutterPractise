@@ -12,7 +12,10 @@ class OrdersOverView extends StatelessWidget {
     final orderData = Provider.of<Orders>(context);
     return Scaffold(
         appBar: AppBar(
-          title: Text('Your Orders'),
+          title: Text(
+            'Your Orders',
+            style: TextStyle(color: Colors.white),
+          ),
           backgroundColor: Theme.of(context).primaryColor,
         ),
         drawer: AppDrawer(),
